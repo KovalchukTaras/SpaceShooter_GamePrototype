@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 139c7f76550e5422b8d1278695412022, type: 3}
+  m_Name: PlayerData
+  m_EditorClassIdentifier: 
+  _planes:
+  - Name: Alien Hunter
+    Experience: 0
+    Health: 100
+    ShootingSpeed: 100
+    RechargeSpeed: 55
+  - Name: Space Ace
+    Experience: 3100
+    Health: 150
+    ShootingSpeed: 105
+    RechargeSpeed: 60
+  - Name: Cosmic Crusader
+    Experience: 7800
+    Health: 230
+    ShootingSpeed: 115
+    RechargeSpeed: 73
+  - Name: Galactic Guardian
+    Experience: 10000
+    Health: 370
+    ShootingSpeed: 125
+    RechargeSpeed: 80
+  - Name: Stellar Sentinel
+    Experience: 15900
+    Health: 550
+    ShootingSpeed: 130
+    RechargeSpeed: 82
+  - Name: Planetary Paladin
+    Experience: 23250
+    Health: 700
+    ShootingSpeed: 140
+    RechargeSpeed: 87
+  - Name: Celestial Sentinel
+    Experience: 27400
+    Health: 890
+    ShootingSpeed: 145
+    RechargeSpeed: 92
+  - Name: Starlight Slayer
+    Experience: 33000
+    Health: 1000
+    ShootingSpeed: 160
+    RechargeSpeed: 100
+  - Name: Galactic Gladiator
+    Experience: 40000
+    Health: 1300
+    ShootingSpeed: 165
+    RechargeSpeed: 105
+  - Name: Galactic Invader
+    Experience: 50300
+    Health: 1700
+    ShootingSpeed: 190
+    RechargeSpeed: 115
+  Planes:
+  - Name: Alien Hunter
+    Experience: 0
+    Health: 100
+    ShootingSpeed: 100
+    RechargeSpeed: 55
+  - Name: Space Ace
+    Experience: 3100
+    Health: 150
+    ShootingSpeed: 105
+    RechargeSpeed: 60
+  - Name: Cosmic Crusader
+    Experience: 7800
+    Health: 230
+    ShootingSpeed: 115
+    RechargeSpeed: 73
+  - Name: Galactic Guardian
+    Experience: 10000
+    Health: 370
+    ShootingSpeed: 125
+    RechargeSpeed: 80
+  - Name: Stellar Sentinel
+    Experience: 15900
+    Health: 550
+    ShootingSpeed: 130
+    RechargeSpeed: 82
+  - Name: Planetary Paladin
+    Experience: 23250
+    Health: 700
+    ShootingSpeed: 140
+    RechargeSpeed: 87
+  - Name: Celestial Sentinel
+    Experience: 27400
+    Health: 890
+    ShootingSpeed: 145
+    RechargeSpeed: 92
+  - Name: Starlight Slayer
+    Experience: 33000
+    Health: 1000
+    ShootingSpeed: 160
+    RechargeSpeed: 100
+  - Name: Galactic Gladiator
+    Experience: 40000
+    Health: 1300
+    ShootingSpeed: 165
+    RechargeSpeed: 105
+  - Name: Galactic Invader
+    Experience: 50300
+    Health: 1700
+    ShootingSpeed: 190
+    RechargeSpeed: 115

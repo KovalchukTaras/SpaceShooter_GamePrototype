@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5376802564048630006
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1002675931862849351, guid: c29549cd0f3ba4aa881666a764ac68a5, type: 3}
+      propertyPath: m_Radius
+      value: 0.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002675931862849351, guid: c29549cd0f3ba4aa881666a764ac68a5, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002675931862849351, guid: c29549cd0f3ba4aa881666a764ac68a5, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2851957909565145135, guid: c29549cd0f3ba4aa881666a764ac68a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.406
+      objectReference: {fileID: 0}
+    - target: {fileID: 2851957909565145135, guid: c29549cd0f3ba4aa881666a764ac68a5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.402
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918122173201851373, guid: c29549cd0f3ba4aa881666a764ac68a5, type: 3}
+      propertyPath: _health
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918122173201851373, guid: c29549cd0f3ba4aa881666a764ac68a5, type: 3}
+      propertyPath: _moveSpeed
+      value: 0.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918122173201851373, guid: c29549cd0f3ba4aa881666a764ac68a5, type: 3}
+      propertyPath: _shootingSpeed
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6988151568022348841, guid: c29549cd0f3ba4aa881666a764ac68a5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 68fa6d2e6999f46ddb3eb5a2fc6d6f25, type: 3}
+    - target: {fileID: 6988151568022348843, guid: c29549cd0f3ba4aa881666a764ac68a5, type: 3}
+      propertyPath: m_Name
+      value: EnPlane1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6988151569504122524, guid: c29549cd0f3ba4aa881666a764ac68a5, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6988151569504122524, guid: c29549cd0f3ba4aa881666a764ac68a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6988151569504122524, guid: c29549cd0f3ba4aa881666a764ac68a5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6988151569504122524, guid: c29549cd0f3ba4aa881666a764ac68a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6988151569504122524, guid: c29549cd0f3ba4aa881666a764ac68a5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6988151569504122524, guid: c29549cd0f3ba4aa881666a764ac68a5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6988151569504122524, guid: c29549cd0f3ba4aa881666a764ac68a5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6988151569504122524, guid: c29549cd0f3ba4aa881666a764ac68a5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6988151569504122524, guid: c29549cd0f3ba4aa881666a764ac68a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6988151569504122524, guid: c29549cd0f3ba4aa881666a764ac68a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6988151569504122524, guid: c29549cd0f3ba4aa881666a764ac68a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6988151569504122525, guid: c29549cd0f3ba4aa881666a764ac68a5, type: 3}
+      propertyPath: m_Name
+      value: Enemy 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7982946862087207762, guid: c29549cd0f3ba4aa881666a764ac68a5, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d081b29d273ee4e698b9ef3e88cfb526, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c29549cd0f3ba4aa881666a764ac68a5, type: 3}
