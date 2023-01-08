@@ -11,11 +11,12 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private Joystick _joystick;
     [SerializeField] private MultiButton[] _multibuttons;
+    [SerializeField] private int[] _ammunitionCount;
 
     private int _level;
     private float _coins;
     private float _experience;
-    private int _planeIndex;
+    private int _planeId;
     private Player _player;
     private int _killedEnemies;
 
@@ -37,8 +38,8 @@ public class GameController : MonoBehaviour
         AddPlayer();
         _gameUI.ShowStartMenu();
         _gameUI.SetSliderValues(
-            _playerData.Planes[_planeIndex].Health,
-            _playerData.Planes[_planeIndex].Health
+            _playerData.Planes[_planeId].Health,
+            _playerData.Planes[_planeId].Health
             );
         SubscribeMultibuttons();
     }
@@ -135,7 +136,7 @@ public class GameController : MonoBehaviour
 
     private void AddPlayer()
     {
-        _player = Instantiate(_players[_planeIndex], _playerStartPos, Quaternion.identity);
+        _player = Instantiate(_players[_planeId], _playerStartPos, Quaternion.identity);
         _player.Joystick = _joystick;
         _player.OnDestroy += Lose;
         _player.OnHit += UpdateSlider;
@@ -146,7 +147,10 @@ public class GameController : MonoBehaviour
     private void GetSavedData()
     {
         _level = PlayerPrefs.GetInt("LevelToPlay");
-        _planeIndex = PlayerPrefs.GetInt("PlaneIndex");
+        _planeId = PlayerPrefs.GetInt("PlaneId");
+
+        for (int i = 0; i < _ammunitionCount.Length; i++)
+            _ammunitionCount[i] = PlayerPrefs.GetInt($"Ammunition{i}Count");
     }
 
     private void SaveNewData(float coins, float experience)

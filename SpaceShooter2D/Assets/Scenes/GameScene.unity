@@ -777,9 +777,6 @@ MonoBehaviour:
   - Tag: bulletBall2
     Prefab: {fileID: 1514962446881384074, guid: b8c99c2ba6354420fb32f22f6ab04343, type: 3}
     Size: 1
-  - Tag: enemyBullet0
-    Prefab: {fileID: 1514962446881384074, guid: 8141d6489661a4ed3994a4b849499a93, type: 3}
-    Size: 1
   - Tag: enemy0
     Prefab: {fileID: 6988151569504122525, guid: c29549cd0f3ba4aa881666a764ac68a5, type: 3}
     Size: 1
@@ -3432,6 +3429,7 @@ MonoBehaviour:
   _multibuttons:
   - {fileID: 982246176}
   - {fileID: 772619115}
+  _ammunitionCount: 
   EnemiesToKill: 0
 --- !u!4 &1142411656
 Transform:
