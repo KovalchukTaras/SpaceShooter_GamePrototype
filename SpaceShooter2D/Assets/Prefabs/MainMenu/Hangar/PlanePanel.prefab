@@ -574,10 +574,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c649b165435048b28a3cb0d1574cacb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: 0
-  _playerData: {fileID: 11400000, guid: 269fab99e2a9a4cac8d90970400e2900, type: 2}
+  Id: 0
   _nameText: {fileID: 8376579993099674749}
-  _experienceText: {fileID: 8376579992149038554}
+  _priceText: {fileID: 8376579992149038554}
+  _playerData: {fileID: 11400000, guid: 269fab99e2a9a4cac8d90970400e2900, type: 2}
   _healthText: {fileID: 5607805890318204171}
   _speedText: {fileID: 5607805889818799867}
   _rechargeText: {fileID: 5607805889636037153}

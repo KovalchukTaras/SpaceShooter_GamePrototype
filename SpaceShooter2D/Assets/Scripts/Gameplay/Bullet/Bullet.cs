@@ -9,15 +9,8 @@ public class Bullet : MonoBehaviour
 
     private Vector2 _startPos;
 
-    private void Start()
-    {
-        _startPos = transform.position;
-    }
-
-    private void FixedUpdate()
-    {
-        Movement();
-    }
+    private void Start() => _startPos = transform.position;
+    private void FixedUpdate() => Movement();
 
     protected virtual void Movement()
     {

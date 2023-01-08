@@ -236,7 +236,7 @@ MonoBehaviour:
   _shootingSpeed: 1.5
   guns:
   - {fileID: 2851957909565145136}
-  bullet: enemyBullet0
+  bullet: bullet0
   _animator: {fileID: 7982946862087207762}
   IsDestroyed: 0
   _experience: 10

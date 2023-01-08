@@ -1,35 +1,36 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
-    [SerializeField] private MenuMapController _menuMapController;
-    [SerializeField] private HangarController _hangarController;
-    [SerializeField] private MenuUI _menuUI;
+    [SerializeField] private Map _map;
+    [SerializeField] private Hangar _hangar;
+    [SerializeField] private Shop _shop;
+    [SerializeField] private PlayerSection _playerSection;
+    [SerializeField] private Ammunition _ammunition;
+    [SerializeField] private Message _message;
+    [Space]
     [SerializeField] private PlayerData _playerData;
+    [SerializeField] private BulletData _bulletData;
+    [SerializeField] private int[] _ammunitionCount;
+    [Space]
+    [SerializeField] private Text _coinsText;
+    [SerializeField] private Text _experienceText;
 
+    private int _planeId;
     private float _coins;
     private float _experience;
-
-    private int _levelToPlay;
     private int _activeLevel;
 
-    private int _playerLevel;
-    private int _planeIndex;
 
     private void Start()
     {
         GetSavedData();
-        _menuMapController.Init(_activeLevel);
-        _menuUI.SetCoinsExpTexts(_coins, _experience);
-        SubscribeLevels();
-        _hangarController.Init();
-        SubscribePlanePanels();
-        SelectPlayer(_planeIndex);
-        SetPlayerLevel();
-
-        _levelToPlay = _activeLevel;
+        SetMainTexts();
+        SelectPlayer(_planeId);
+        _ammunition.SetValues(_ammunitionCount);
+        GoToMap();
     }
 
     private void GetSavedData()
@@ -37,61 +38,105 @@ public class MenuController : MonoBehaviour
         _coins = PlayerPrefs.GetFloat("Coins");
         _experience = PlayerPrefs.GetFloat("Experience");
         _activeLevel = PlayerPrefs.GetInt("Level");
-        _planeIndex = PlayerPrefs.GetInt("PlaneIndex");
+        _planeId = PlayerPrefs.GetInt("PlaneId");
+
+        for(int i = 0; i < _ammunitionCount.Length; i++)
+            _ammunitionCount[i] = PlayerPrefs.GetInt($"Ammunition{i}Count");
     }
 
-    private void SubscribeLevels()
+
+    private void SubscribeMapPanels(IMenuPanel[] menuPanels)
     {
-        foreach (var level in _menuMapController.Levels)
-            level.OnSelected += SelectLevelToPlay;
+        foreach (var panel in menuPanels)
+            panel.OnSelected += SelectLevelToPlay;
     }
 
-    private void SubscribePlanePanels()
+    private void SubscribeHangarPanels(IMenuPanel[] menuPanels)
     {
-        foreach (var level in _hangarController.PlanePanels)
-            level.OnSelected += SelectPlayer;
+        foreach (var panel in menuPanels)
+            panel.OnSelected += SelectPlayer;
     }
 
-    private void SelectLevelToPlay(int num)
+    private void SubscribeShopPanels(IMenuPanel[] menuPanels)
     {
-        _levelToPlay = num;
-        PlayerPrefs.SetInt("LevelToPlay", _levelToPlay);
+        foreach (var panel in menuPanels)
+            panel.OnSelected += AddAmmunition;
+    }
+
+
+    private void SelectLevelToPlay(int level)
+    {
+        PlayerPrefs.SetInt("LevelToPlay", level);
         StartPlay();
     }
 
-    private void SelectPlayer(int index)
+    private void SelectPlayer(int id)
     {
-        float newPlaneExp = _playerData.Planes[index].Experience;
+        float newPlaneExp = _playerData.Planes[id].Experience;
         if (_experience >= newPlaneExp)
         {
-            _planeIndex = index;
-            List<PlayerData.Plane> planes = _playerData.Planes;
-            _menuUI.UpdatePlayerSection(
-                _planeIndex,
-                planes[_planeIndex].Name,
-                planes[_planeIndex].Health,
-                planes[_planeIndex].ShootingSpeed,
-                planes[_planeIndex].RechargeSpeed
-                );
-            PlayerPrefs.SetInt("PlaneIndex", _planeIndex);
+            _planeId = id;
+            PlayerPrefs.SetInt("PlaneId", _planeId);
+            _playerSection.SetAll(id, CalculatePlayerLevel());
             GoToMap();
         }
+        else _message.ShowMessage("Need more experience!");
     }
 
-    private void SetPlayerLevel()
+    private void AddAmmunition(int id)
     {
-        _playerLevel = Mathf.CeilToInt(_experience / 1000);
-        _menuUI.SetPlayerLevelText(_playerLevel);
+        float price = _bulletData.Bullets[id].Price;
+        if (price <= _coins)
+        {
+            _coins -= price;
+            _ammunitionCount[id]++;
+            SetMainTexts();
+            _ammunition.SetValues(_ammunitionCount);
+            _shop.Init(_ammunitionCount);
+
+            PlayerPrefs.SetInt($"Ammunition{id}Count", _ammunitionCount[id]);
+            PlayerPrefs.SetFloat("Coins", _coins);
+        }
+        else _message.ShowMessage("Need more gems!");
     }
 
-    private void StartPlay()
+    private int CalculatePlayerLevel() => Mathf.CeilToInt(_experience / 1000);
+
+    private void StartPlay() => SceneManager.LoadScene(2);
+
+    public void GoToMap()
     {
-        SceneManager.LoadScene(2);
+        _map.gameObject.SetActive(true);
+        _hangar.gameObject.SetActive(false);
+        _shop.gameObject.SetActive(false);
+
+        _map.Init(_activeLevel);
+        SubscribeMapPanels(_map.Levels);
     }
 
-    public void GoToMap() => _menuUI.ShowMapSection();
+    public void GoToHangar()
+    {
+        _hangar.gameObject.SetActive(true);
+        _map.gameObject.SetActive(false);
+        _shop.gameObject.SetActive(false);
 
-    public void GoToHangar() => _menuUI.ShowHangarSection();
+        _hangar.Init();
+        SubscribeHangarPanels(_hangar.Panels);
+    }
 
-    public void GoToShop() => _menuUI.ShowShopSection();
+    public void GoToShop()
+    {
+        _shop.gameObject.SetActive(true);
+        _map.gameObject.SetActive(false);
+        _hangar.gameObject.SetActive(false);
+
+        _shop.Init(_ammunitionCount);
+        SubscribeShopPanels(_shop.Panels);
+    }
+
+    private void SetMainTexts()
+    {
+        _coinsText.text = FormatNumbers.FormatNumber(_coins);
+        _experienceText.text = FormatNumbers.FormatNumber(_experience);
+    }
 }
